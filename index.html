@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>Python Flask Upload and display image</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+</head>
+<body>
+<p><h1 align="center">Python Flask Upload and display image</h1></p>
+<div class="container">
+<div class="row">
+    <h2>Select a file to upload</h2>
+    <p>
+        {% with messages = get_flashed_messages() %}
+          {% if messages %}
+            <ul>
+            {% for message in messages %}
+              <li>{{ message }}</li>
+            {% endfor %}
+            </ul>
+          {% endif %}
+        {% endwith %}
+    </p>
+    <form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+             <p>
+                <input type="file" name="file" class="form-control" autocomplete="off" required>
+            </p>
+        </dl>
+            <p>
+                <input type="submit" value="Submit" class="btn btn-info">
+            </p>
+    </form>     
+    {% if filename %}
+        <div>
+            <img src="{{ url_for('display_image', filename=filename) }}">
+        </div>
+    {% endif %}   
+<form action="/action_page.php">
+    <input type="checkbox" id="checkbox1" name="checkbox1" value="checkbox1">
+    <label for="checkbox1"> checkbox1</label><br>
+    <input type="checkbox" id="checkbox2" name="checkbox2" value="checkbox2">
+    <label for="checkbox2"> checkbox2</label><br>
+    <input type="checkbox" id="checkbox3" name="checkbox3" value="checkbox3">
+    <label for="checkbox3"> checkbox3</label><br>
+    <input type="checkbox" id="checkbox4" name="checkbox4" value="checkbox4">
+    <label for="checkbox4"> checkbox4</label><br><br>
+    <input type="submit" value="Submit Order">
+</form>
+<form action="/action_page.php">
+  <p>Text box1:
+    <button type="button" class="btn btn-default btn-sm">
+    <a href="C:\Users\IT\Downloads\flask-pytorch-background-remover-master (1)\flask-pytorch-background-remover-master\static\uploads">
+</a>
+      <span class="glyphicon glyphicon-folder-open"></span> Uploads
+    </button>
+  </p>
+    <label for="txtbox">text box2: </label>
+    <input type="text" id="txtbox" name="txtbox"><br><br>
+    <label for="txtbox">text box3: </label>
+    <input type="text" id="txtbox" name="txtbox"><br><br>
+    <label for="txtbox">text box4: </label>
+    <input type="text" id="txtbox" name="txtbox"><br><br>
+  </form>
+  {% if filename %}
+    <div>
+        <img src="{{ url_for('display_image', filename=filename) }}">
+    </div>
+ {% endif %}
+ <form action="/action_page.php">
+    <label for="txtbox">Image Path: </label>
+ </form>
+<input type="text" value="C:\Users\IT\Downloads\flask-pytorch-background-remover-master (1)\flask-pytorch-background-remover-master\static\uploads" id="myInput">
+<button onclick="myFunction()">Copy text</button>
+<script>
+function myFunction() {
+  var copyText = document.getElementById("myInput");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); 
+  navigator.clipboard.writeText(copyText.value);
+  alert("Copied the text: " + copyText.value);
+}
+</script>
+
+
+</div>
+</div>
+</body>
+</html>
